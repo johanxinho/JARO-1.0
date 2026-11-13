@@ -7,3 +7,8 @@ workspace/*
 !workspace/.gitkeep
 jaro.bat
 .env
+venv/
+.venv/
+env/
+lightpanda
+lightpanda.exe
