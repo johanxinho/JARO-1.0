@@ -1,0 +1,5 @@
+{
+  "name": "chequear_ram",
+  "plugin": "sys_ram",
+  "instructions": "Verifica el consumo de memoria RAM en tiempo real."
+}

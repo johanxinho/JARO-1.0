@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+BASE="$HOME/JohanAI"
+CODE_DIR="$BASE/code"
+WORKSPACE_DIR="$BASE/workspace"
+
+case "$1" in
+    "run"|"start"|"")
+        
+        cd "$CODE_DIR" && python3 agent.py
+        ;;
+    "ver"|"preview")
+        TARGET="$WORKSPACE_DIR"
+        [ -n "$2" ] && [ -d "$WORKSPACE_DIR/$2" ] && TARGET="$WORKSPACE_DIR/$2"
+        echo "[JARO PREVIEW] Sirviendo en http://localhost:8080 (Ctrl+C para salir)"
+        python3 -m http.server 8080 --directory "$TARGET"
+        ;;
+    "clean")
+        echo "[JARO CLEAN] Limpiando __pycache__ y temporales..."
+        find "$BASE" -type d -name "__pycache__" -exec rm -r {} + 2>/dev/null
+        echo "[OK] Entorno limpio."
+        ;;
+    *)
+        echo "Uso: johan [run | ver <proyecto> | clean]"
+        ;;
+es.
